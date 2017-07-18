@@ -27,8 +27,9 @@ ids[] = Extrude {0, 0, 5 * AirfoilLc}
 };
 
 Physical Surface("outlet") = {ids[2]};
-Physical Surface("tunnel") = {ids[{3, 5}]};
+Physical Surface("walls") = {ids[{3, 5}]};
 Physical Surface("inlet") = {ids[4]};
 Physical Surface("airfoil") = {ids[{6:8}]};
+Physical Surface("frontAndBack") = {ids[0], TwoDimSurf};
 Physical Volume("volume") = {ids[1]};
 
