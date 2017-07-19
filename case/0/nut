@@ -38,6 +38,12 @@ boundaryField
         value           uniform 0;
     }
 
+    airfoil
+    {
+        type            nutUSpaldingWallFunction;
+        value           uniform 0;
+    }
+
     frontAndBack
     {
         type            empty;

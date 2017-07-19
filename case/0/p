@@ -35,6 +35,11 @@ boundaryField
         type            zeroGradient;
     }
 
+    airfoil
+    {
+        type            zeroGradient;
+    }
+
     frontAndBack
     {
         type            empty;

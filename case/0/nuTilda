@@ -38,6 +38,12 @@ boundaryField
         value           uniform 0;
     }
 
+    airfoil
+    {
+        type            fixedValue;
+        value           uniform 0;
+    }
+
     frontAndBack
     {
         type            empty;
