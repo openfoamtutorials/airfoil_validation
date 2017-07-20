@@ -9,6 +9,7 @@ Point(ce++) = {0, 0, 0};
 XX = 12;
 PointCount = 100;
 AirfoilLc = 0.01;
+aoa = 5;
 Call SymmetricAirfoil;
 
 WindTunnelHeight = 10;

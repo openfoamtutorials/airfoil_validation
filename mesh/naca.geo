@@ -11,28 +11,46 @@ Macro NACA00
     y *= 5.0 * XX / 100.0;
 Return
 
+Macro RotateAirfoilPoint
+    // rotates pointId about quarter-chord.
+    // aoa is the angle of attack in degrees.
+    Rotate {{0, 0, 1}, {0.25, 0, 0}, -aoa * Pi / 180.0}
+    {
+        Point{pointId};
+    }
+Return
+
 Macro SymmetricAirfoil
     // draws a symmetric airfoil, given XX as in NACA00XX.
     // PointCount specifies number of points.
     // Draws le at {0, 0} and te at {1, 0}.
     // ce is the current point id.
     // AirfoilLc is the length characteristic on airfoil surface.
+    // aoa is the angle of attack in degrees.
     // Results: le, te, upper[], lower[], AirfoilSurface
     x = 0;
     increment = 1.0 / PointCount;
     Point(ce++) = {0, 0, 0, AirfoilLc};
-    le = ce - 1;
+    pointId = ce - 1;
+    Call RotateAirfoilPoint;
+    le = pointId;
     Point(ce++) = {1, 0, 0, AirfoilLc};
-    te = ce - 1;
+    pointId = ce - 1;
+    Call RotateAirfoilPoint;
+    te = pointId;
     upper[] = {};
     lower[] = {};
     For x In {increment: 1 - increment: increment}
         // Printf("%f", x);
         Call NACA00;
         Point(ce++) = {x, y, 0, AirfoilLc};
-        upper = {ce - 1, upper[]};
+        pointId = ce - 1;
+        Call RotateAirfoilPoint;
+        upper = {pointId, upper[]};
         Point(ce++) = {x, -y, 0, AirfoilLc};
-        lower += ce - 1;
+        pointId = ce - 1;
+        Call RotateAirfoilPoint;
+        lower += pointId;
     EndFor
     Line(ce++) = {te, upper[0]};
     upperTe = ce - 1;
