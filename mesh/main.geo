@@ -19,7 +19,7 @@ Call WindTunnel;
 Surface(ce++) = {WindTunnelLoop, AirfoilLoop};
 TwoDimSurf = ce - 1;
 
-ids[] = Extrude {0, 0, 5 * AirfoilLc}
+ids[] = Extrude {0, 0, 0.1}
 {
 	Surface{TwoDimSurf};
 	Layers{1};
