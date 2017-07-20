@@ -1,20 +1,17 @@
 Include "naca.geo";
 Include "WindTunnel.geo";
+Include "parameters.geo";
 
 // Units are multiples of chord.
 
 ce = 0;
 Point(ce++) = {0, 0, 0};
 
-XX = 12;
-PointCount = 100;
-AirfoilLc = 0.01;
-aoa = 5;
 Call SymmetricAirfoil;
 
-WindTunnelHeight = 10;
-WindTunnelLength = 20;
-WindTunnelLc = 1;
+WindTunnelHeight = 20;
+WindTunnelLength = 40;
+WindTunnelLc = 3;
 Call WindTunnel;
 
 Surface(ce++) = {WindTunnelLoop, AirfoilLoop};
