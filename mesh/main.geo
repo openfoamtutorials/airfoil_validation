@@ -11,7 +11,7 @@ Call SymmetricAirfoil;
 
 WindTunnelHeight = 20;
 WindTunnelLength = 40;
-WindTunnelLc = 3;
+WindTunnelLc = 1;
 Call WindTunnel;
 
 Surface(ce++) = {WindTunnelLoop, AirfoilLoop};
